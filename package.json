@@ -1,7 +1,7 @@
 {
-  "name": "node-typescript-boilerplate",
+  "name": "playground-swagger-parser",
   "version": "0.0.0",
-  "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
+  "description": "",
   "type": "module",
   "engines": {
     "node": ">= 18.12 <19"
@@ -36,6 +36,7 @@
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "@apidevtools/swagger-parser": "^10.1.0",
     "tslib": "~2.4"
   },
   "volta": {
