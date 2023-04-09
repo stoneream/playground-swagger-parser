@@ -9,14 +9,23 @@ try {
       console.log(document.components.schemas);
 
       const components = document.components;
+      const schemas = components.schemas;
 
-      for (const [schemaName, schema] of Object.entries(components.schemas)) {
-        console.log(schemaName)
-        for (const [propertyName, property] of Object.entries(schema.properties)) {
-          console.log(`${propertyName} : ${property}`)
+      for (const [schemaName, schema] of Object.entries(schemas)) {
+        const properties = schema.properties
+
+        if (properties) {
+          console.log(`=== ${schemaName} ===`)
+          for (const [propertyName, property] of Object.entries(properties)) {
+            console.log(propertyName, property)
+
+            // SchemaObjectのケース
+            // ReferenceObjectのケース
+
+          }
         }
       }
     });
-} catch(err) {
+} catch (err) {
   console.error(err);
 }
