@@ -19,8 +19,23 @@ try {
           for (const [propertyName, property] of Object.entries(properties)) {
             console.log(propertyName, property)
 
-            // SchemaObjectのケース
-            // ReferenceObjectのケース
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const isReferenceObject = (property: any): property is OpenAPIV3_1.ReferenceObject =>
+              property.$ref !== undefined;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const isSchemaObject = (property: any): property is OpenAPIV3_1.SchemaObject =>
+              !isReferenceObject(property)
+
+            if (isSchemaObject(property)) {
+              if (property.allOf) {
+                // do nothing
+              } else {
+                // do nothing
+              }
+
+            } else {
+              // do nothing
+            }
 
           }
         }
