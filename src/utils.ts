@@ -9,14 +9,25 @@ class Utils {
     return s.replace(/_./g, (ss) => ss.charAt(1).toUpperCase());
   }
 
-  static removeWord(s: string, word: string): string {
-    return s.replace(word, '');
-  }
-
   static isReferenceObject = (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    property: any,
-  ): property is OpenAPIV3.ReferenceObject => property?.$ref !== undefined;
+    property: unknown,
+  ): property is OpenAPIV3.ReferenceObject => {
+    return (
+      typeof property === 'object' && property !== null && '$ref' in property
+    );
+  };
+
+  static isOperationObject = (
+    any: unknown,
+  ): any is OpenAPIV3.OperationObject => {
+    return typeof any === 'object' && any !== null && 'responses' in any;
+  };
+
+  static isArraySchemaObject = (
+    any: unknown,
+  ): any is OpenAPIV3.ArraySchemaObject => {
+    return typeof any === 'object' && any !== null && 'items' in any;
+  };
 }
 
 export default Utils;
